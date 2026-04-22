@@ -20,6 +20,7 @@ mono_crash.*.json
 # Binaries
 *.o
 *.os
+*.so
 *.obj
 *.bc
 *.pyc

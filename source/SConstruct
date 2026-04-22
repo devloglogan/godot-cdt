@@ -16,9 +16,10 @@ env = SConscript("godot-cpp/SConstruct")
 env.Append(CPPPATH=["gdExtension/"])
 sources = Glob("gdExtension/*.cpp")
 
-if env["platform"] == "android":
+if not env.get("is_msvc", False):
     env.Append(CXXFLAGS=["-fexceptions"])
-elif env["platform"] == "macos":
+
+if env["platform"] == "macos":
     library = env.SharedLibrary(
         "../demo/bin/libcdt.{}.{}.framework/libcdt.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
